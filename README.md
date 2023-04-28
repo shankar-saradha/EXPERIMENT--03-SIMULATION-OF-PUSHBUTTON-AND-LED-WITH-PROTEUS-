@@ -72,13 +72,45 @@ https://engineeringxpert.com/wp-content/uploads/2022/04/26.png
 
 
 ## STM 32 CUBE PROGRAM :
+```c
+#include "main.h"
+#include"stdio.h"
+#include"stdbool.h"
+bool pm;
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+int main(void)
+{
+  HAL_Init();
+  SystemClock_Config();
+  MX_GPIO_Init();
+	  while (1)
+	    {
+	     pm= HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_1);
+	      if(pm==0)
+              {
+	  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+	  	HAL_Delay(1000);
+	  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+	  	HAL_Delay(1000);
+	       }
+	      else
+	       {
+	  	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+	        }
+	     }
+  }
+  ```
 
 
 
 
 ## Output screen shots of proteus  :
- 
- 
+# LED OFF:
+ ![234928298-da56ddbb-407a-43c7-a215-e9024e0ca4e2](https://user-images.githubusercontent.com/93978702/235100126-a5c86290-9cde-418d-8ab6-64bb93ffbb91.png)
+# LED ON:
+![ssss](https://user-images.githubusercontent.com/93978702/235100972-90d130f4-d3a1-48b9-b282-17ca2ef305d3.png)
+
  
  
 ## Result :
